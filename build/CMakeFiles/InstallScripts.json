@@ -1,0 +1,15 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/l23ingle/gr-pon/build/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/include/gnuradio/pon/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/lib/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/apps/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/examples/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/docs/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/python/pon/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/python/pon/bindings/cmake_install.cmake",
+		"/home/l23ingle/gr-pon/build/grc/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

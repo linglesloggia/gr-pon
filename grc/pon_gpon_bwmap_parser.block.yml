@@ -1,0 +1,14 @@
+id: pon_gpon_bwmap_parser
+label: GPON BWmap Parser
+category: '[pon]'
+templates:
+  imports: from pon import gpon_bwmap_parser
+  make: gpon_bwmap_parser()
+inputs:
+- label: in
+  domain: stream
+  dtype: byte
+outputs:
+- label: out
+  domain: message
+file_format: 1

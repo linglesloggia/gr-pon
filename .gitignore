@@ -1,0 +1,66 @@
+# === Ignorar carpeta misc completa ===
+misc/
+
+# === Archivos de sistema ===
+.DS_Store
+Thumbs.db
+
+# === Entornos virtuales (Python) ===
+venv/
+.env/
+*.env
+*.venv
+
+# === Archivos Python compilados ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === C/C++ build artifacts ===
+*.o
+*.obj
+*.so
+*.exe
+*.out
+*.a
+*.lib
+
+# === Build folders ===
+build/
+dist/
+*.egg-info/
+
+# === Configuraciones de editores ===
+.vscode/
+.idea/
+*.swp
+
+# === Logs y archivos temporales ===
+*.log
+*.tmp
+*.bak
+*.old
+
+# === Git archivos de parche o merge ===
+*.orig
+*.rej
+
+# === Archivos generados por Make o CMake ===
+Makefile.in
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# === Archivos de debugging ===
+core.*
+vgcore.*
+
+# === Archivos de test coverage ===
+.coverage
+htmlcov/
+coverage.xml
+
+# === Archivos personales o locales ===
+local_settings.py
+secrets.json

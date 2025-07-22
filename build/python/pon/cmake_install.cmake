@@ -1,8 +1,8 @@
-# Install script for directory: /home/l23ingle/gr-pon/python/pon
+# Install script for directory: /home/4moulins/projects/gr-pon/python/pon
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/l23ingle/miniconda3/envs/gnuradio-env")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,19 +44,19 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/l23ingle/gr-pon/build/python/pon/bindings/cmake_install.cmake")
+  include("/home/4moulins/projects/gr-pon/build/python/pon/bindings/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3.13/site-packages/gnuradio/pon" TYPE FILE FILES
-    "/home/l23ingle/gr-pon/python/pon/__init__.py"
-    "/home/l23ingle/gr-pon/python/pon/gpon_bwmap_parser.py"
+    "/home/4moulins/projects/gr-pon/python/pon/__init__.py"
+    "/home/4moulins/projects/gr-pon/python/pon/gpon_bwmap_parser.py"
     )
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/l23ingle/gr-pon/build/python/pon/install_local_manifest.txt"
+  file(WRITE "/home/4moulins/projects/gr-pon/build/python/pon/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

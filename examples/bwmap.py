@@ -6,24 +6,24 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Not titled yet
-# GNU Radio version: 3.10.12.0
+# GNU Radio version: v3.11.0.0git-980-g25047da6
 
 from PyQt5 import Qt
 from gnuradio import qtgui
 from gnuradio import blocks
 import pmt
 from gnuradio import blocks, gr
+from pon import gpon_bwmap_parser
+import threading
 from gnuradio import gr
 from gnuradio.filter import firdes
 from gnuradio.fft import window
 import sys
 import signal
-from PyQt5 import Qt
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
-from pon import gpon_bwmap_parser
-import threading
+
 
 
 
@@ -72,7 +72,7 @@ class bwmap(gr.top_block, Qt.QWidget):
         self.pon_gpon_bwmap_parser_0 = gpon_bwmap_parser()
         self.blocks_throttle2_0 = blocks.throttle( gr.sizeof_char*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
         self.blocks_message_debug_0 = blocks.message_debug(True, gr.log_levels.info)
-        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/l23ingle/gr-pon/misc/raw_captures/raw_1onuTCONT1MAXBW.gpon', True, 0, 0)
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/4moulins/projects/gr-pon/misc/raw_captures/raw_1onuTCONT1MAXBW.gpon', True, 0, 0)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
 
 

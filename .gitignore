@@ -1,5 +1,6 @@
 # === Ignorar carpeta misc completa ===
 misc/
+sandbox/records/
 
 # === Archivos de sistema ===
 .DS_Store

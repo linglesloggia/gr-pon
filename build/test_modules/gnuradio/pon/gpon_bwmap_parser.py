@@ -10,67 +10,90 @@
 import numpy as np
 from gnuradio import gr
 import pmt
-from .gpon_parser import find_sync_word, GponPacket 
+import pprint
+from .gpon_parser import GponPacket, find_sync_word_bitwise
+
 
 
 class gpon_bwmap_parser(gr.basic_block):
-    """
-    docstring for block gpon_bwmap_parser
-    """
     def __init__(self):
-        gr.basic_block.__init__(self,
+        gr.basic_block.__init__(
+            self,
             name="gpon_bwmap_parser",
-            in_sig=[np.uint8],
-            out_sig=[])
-        self.set_output_multiple(1)
-        self.message_port_register_out(pmt.intern("out"))
-        self.buffer = bytearray()
+            in_sig=[np.uint8],  # cada entrada es un bit (0 o 1)
+            out_sig=[]
+        )
 
-    #def forecast(self, noutput_items, ninputs):
-        # ninputs is the number of input connections
-        # setup size of input_items[i] for work call
-        # the required number of input items is returned
-        #   in a list where each element represents the
-        #   number of required items for each input
-        #ninput_items_required = [noutput_items] * ninputs
-        #return ninput_items_required
+        self.bit_buffer = []
+        self.message_port_register_out(pmt.intern("out"))
 
     def general_work(self, input_items, output_items):
-        in0 = input_items[0].tobytes()
-        self.buffer += in0
-        consumed = len(in0)
+        in_bits = input_items[0].tolist()
+        self.bit_buffer.extend(in_bits)
+        consumed = len(in_bits)
 
-        # CAMBIO: Quitar el while True - procesar solo UN paquete por llamada
-        sync_pos = find_sync_word(self.buffer)
-        if sync_pos != -1 and len(self.buffer) - sync_pos >= 64:
+        # print(f"[DEBUG] Received {len(in_bits)} bits. Buffer size: {len(self.bit_buffer)} bits")
+
+        sync_bit_pos = find_sync_word_bitwise(self.bit_buffer)
+
+        if sync_bit_pos != -1 and len(self.bit_buffer) - sync_bit_pos >= 30 * 8:
+            POSTSYNC_START = sync_bit_pos + 32  # saltear el SYNC_WORD
+            postsync_data = self.bit_buffer[POSTSYNC_START:]
+            #print('SYNC WORD: ',self.bit_buffer[POSTSYNC_START-32:POSTSYNC_START+32])
             try:
-                if not GponPacket.is_downlink_packet(self.buffer[sync_pos:]):
-                    self.buffer = self.buffer[sync_pos + 8:]
+                pkt = GponPacket(postsync_data)
+                total_len = pkt.get_total_length()
+
+                if len(postsync_data) >= total_len:
+                    #print("[DEBUG] Sync found, packet total length:", total_len)
+
+                    
+                    msg = {
+                        "ident": [
+                            {
+                                "fec_ind": pkt.FEC_Ind,
+                                "reserved": pkt.Reserved,
+                                "superframe_counter": str(pkt.Superframe_counter)
+                            }
+                        ],
+                        "ploamd":[{
+                                "onud_id": pkt.ONU_ID,
+                                "message_id": pkt.Message_ID,
+                                "ploamd_data": str(pkt.Data),
+                                "ploamd_crc": pkt.ploamdCRC
+                        }],
+                        "bwmap_len": pkt.bwmap_length,
+                        "allocs": [
+                            {
+                                "alloc_id": a.alloc_id,
+                                "start": a.start_time,
+                                "stop": a.stop_time
+                            } for a in pkt.allocations
+                        ]
+                    }
+
+
+                    #pretty_headers = pprint.pformat()
+
+                    # Usar pprint para dar formato bonito con saltos de línea
+                    pretty_msg = pprint.pformat(msg, indent=2)
+
+
+
+                    # Enviar como string PMT para verlo legible en Message Debug
+                    self.message_port_pub(
+                        pmt.intern("out"),
+                        pmt.to_pmt(pretty_msg)
+                    )
+
+                    # Eliminar los bits ya procesados
+                    self.bit_buffer = self.bit_buffer[sync_bit_pos + total_len:]
                 else:
-                    pkt = GponPacket(self.buffer[sync_pos:])
-                    total_len = pkt.get_total_length()
-                    if sync_pos + total_len <= len(self.buffer):
-                        # Publicar como mensaje
-                        self.message_port_pub(
-                            pmt.intern("out"),
-                            pmt.to_pmt({
-                                "bwmap_len": pkt.bwmap_length,
-                                "allocs": [
-                                    {
-                                        "alloc_id": a.alloc_id,
-                                        "start": a.start_time,
-                                        "stop": a.stop_time
-                                    } for a in pkt.allocations
-                                ]
-                            })
-                        )
-                        self.buffer = self.buffer[sync_pos + total_len:]
-                    # Si no hay suficientes datos, mantener el buffer y esperar más
+                    print("[DEBUG] Sync found, but not enough data yet.")
 
             except Exception as e:
-                print(f"[ERROR] Parsing failed: {e}")
-                self.buffer = self.buffer[sync_pos + 8:]
+                print(f"[ERROR] Packet parsing failed: {e}")
+                self.bit_buffer = self.bit_buffer[sync_bit_pos + 8 * 8:]  # saltar 8 bytes
 
         self.consume(0, consumed)
         return 0
-

@@ -1,7 +1,7 @@
 options:
   parameters:
     alias: ''
-    author: 4moulins
+    author: "Lucas Ingl\xE9s"
     catch_exceptions: 'True'
     comment: ''
     copyright: ''
@@ -19,7 +19,7 @@ options:
     run: 'True'
     run_command: '{python} -u {filename}'
     thread_safe_setters: ''
-    title: Not titled yet
+    title: gr-pon
   states:
     bus_sink: false
     bus_source: false
@@ -90,7 +90,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 192.0]
+    coordinate: [8, 144.0]
     rotation: 0
     state: enabled
 - name: blocks_float_to_char_0
@@ -107,7 +107,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 508.0]
+    coordinate: [1232, 124.0]
     rotation: 0
     state: enabled
 - name: blocks_message_debug_0
@@ -122,7 +122,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1416, 368.0]
+    coordinate: [1608, 96.0]
     rotation: 0
     state: enabled
 - name: blocks_threshold_ff_0
@@ -140,7 +140,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [928, 492.0]
+    coordinate: [1088, 108.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle2_0
@@ -161,7 +161,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 212.0]
+    coordinate: [224, 164.0]
     rotation: 0
     state: enabled
 - name: digital_binary_slicer_fb_0
@@ -203,7 +203,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 164.0]
+    coordinate: [744, 116.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0
@@ -227,7 +227,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [416, 184.0]
+    coordinate: [384, 136.0]
     rotation: 0
     state: enabled
 - name: pon_gpon_bwmap_parser_0
@@ -242,7 +242,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1176, 400.0]
+    coordinate: [1376, 128.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -339,9 +339,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [656, 48.0]
+    coordinate: [624, 104.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0_0
   id: qtgui_time_sink_x
   parameters:
@@ -436,9 +436,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 52.0]
+    coordinate: [416, 40.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0_1
   id: qtgui_time_sink_x
   parameters:
@@ -533,9 +533,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1240, 40.0]
+    coordinate: [480, 304.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0_1_0
   id: qtgui_time_sink_x
   parameters:
@@ -630,9 +630,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1088, 600.0]
+    coordinate: [1192, 224.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: rational_resampler_xxx_0
   id: rational_resampler_xxx
   parameters:
@@ -650,7 +650,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 200.0]
+    coordinate: [568, 152.0]
     rotation: 0
     state: enabled
 

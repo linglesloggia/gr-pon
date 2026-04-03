@@ -48,7 +48,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3.13/site-packages/gnuradio/pon" TYPE FILE FILES
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3.14/site-packages/gnuradio/pon" TYPE FILE FILES
     "/home/4moulins/projects/gr-pon/python/pon/__init__.py"
     "/home/4moulins/projects/gr-pon/python/pon/gpon_bwmap_parser.py"
     )

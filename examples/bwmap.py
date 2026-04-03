@@ -6,24 +6,24 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Not titled yet
-# GNU Radio version: v3.11.0.0git-980-g25047da6
+# GNU Radio version: 3.10.12.0
 
 from PyQt5 import Qt
 from gnuradio import qtgui
 from gnuradio import blocks
 import pmt
 from gnuradio import blocks, gr
-from pon import gpon_bwmap_parser
-import threading
 from gnuradio import gr
 from gnuradio.filter import firdes
 from gnuradio.fft import window
 import sys
 import signal
+from PyQt5 import Qt
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
-
+from pon import gpon_bwmap_parser
+import threading
 
 
 

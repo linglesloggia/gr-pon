@@ -17,7 +17,7 @@
 Boost_DATE_TIME_LIBRARY_RELEASE:STRING=/usr/lib/libboost_date_time.so.1.88.0
 
 //The directory containing a CMake configuration file for Boost.
-Boost_DIR:PATH=/usr/lib/cmake/Boost-1.88.0
+Boost_DIR:PATH=/usr/lib/cmake/Boost-1.90.0
 
 //Path to a file.
 Boost_INCLUDE_DIR:PATH=/usr/include
@@ -44,7 +44,7 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -70,7 +70,7 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+CMAKE_C_COMPILER:STRING=/usr/bin/cc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -158,6 +158,9 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
+CMAKE_PROJECT_COMPAT_VERSION:STATIC=
+
+//Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
 
 //Value Computed by CMake
@@ -165,6 +168,9 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=gr-pon
+
+//Value Computed by CMake
+CMAKE_PROJECT_SPDX_LICENSE:STATIC=
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -303,26 +309,38 @@ VOLK_LIBRARIES:STRING=Volk::volk
 //The directory containing a CMake configuration file for Volk.
 Volk_DIR:PATH=/usr/lib/cmake/volk
 
+//The directory containing a CMake configuration file for boost_atomic.
+boost_atomic_DIR:PATH=/usr/lib/cmake/boost_atomic-1.90.0
+
+//The directory containing a CMake configuration file for boost_chrono.
+boost_chrono_DIR:PATH=/usr/lib/cmake/boost_chrono-1.90.0
+
+//The directory containing a CMake configuration file for boost_container.
+boost_container_DIR:PATH=/usr/lib/cmake/boost_container-1.90.0
+
 //The directory containing a CMake configuration file for boost_date_time.
-boost_date_time_DIR:PATH=/usr/lib/cmake/boost_date_time-1.88.0
+boost_date_time_DIR:PATH=/usr/lib/cmake/boost_date_time-1.90.0
+
+//The directory containing a CMake configuration file for boost_exception.
+boost_exception_DIR:PATH=/usr/lib/cmake/boost_exception-1.90.0
 
 //The directory containing a CMake configuration file for boost_headers.
-boost_headers_DIR:PATH=/usr/lib/cmake/boost_headers-1.88.0
+boost_headers_DIR:PATH=/usr/lib/cmake/boost_headers-1.90.0
 
 //The directory containing a CMake configuration file for boost_program_options.
-boost_program_options_DIR:PATH=/usr/lib/cmake/boost_program_options-1.88.0
+boost_program_options_DIR:PATH=/usr/lib/cmake/boost_program_options-1.90.0
 
 //The directory containing a CMake configuration file for boost_regex.
-boost_regex_DIR:PATH=/usr/lib/cmake/boost_regex-1.88.0
+boost_regex_DIR:PATH=/usr/lib/cmake/boost_regex-1.90.0
 
 //The directory containing a CMake configuration file for boost_system.
 boost_system_DIR:PATH=/usr/lib/cmake/boost_system-1.88.0
 
 //The directory containing a CMake configuration file for boost_thread.
-boost_thread_DIR:PATH=/usr/lib/cmake/boost_thread-1.88.0
+boost_thread_DIR:PATH=/usr/lib/cmake/boost_thread-1.90.0
 
 //The directory containing a CMake configuration file for boost_unit_test_framework.
-boost_unit_test_framework_DIR:PATH=/usr/lib/cmake/boost_unit_test_framework-1.88.0
+boost_unit_test_framework_DIR:PATH=/usr/lib/cmake/boost_unit_test_framework-1.90.0
 
 //The directory containing a CMake configuration file for fmt.
 fmt_DIR:PATH=/usr/lib/cmake/fmt
@@ -358,9 +376,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/4moulins/projects/gr-pon/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=0
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=3
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -505,7 +523,7 @@ DOXYGEN_DOT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DOXYGEN_EXECUTABLE
 DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
 //Details about finding Boost
-FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/cmake/Boost-1.88.0/BoostConfig.cmake][found components: date_time program_options system regex thread unit_test_framework ][v1.88.0(1.88.0)]
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/cmake/Boost-1.90.0/BoostConfig.cmake][found components: date_time program_options regex thread unit_test_framework ][v1.90.0(1.90.0)]
 //Details about finding GMP
 FIND_PACKAGE_MESSAGE_DETAILS_GMP:INTERNAL=[/usr/lib/libgmpxx.so][/usr/lib/libgmp.so][/usr/include][v()]
 //Details about finding Git
@@ -515,9 +533,9 @@ FIND_PACKAGE_MESSAGE_DETAILS_MPLIB:INTERNAL=[/usr/lib/libgmpxx.so][/usr/lib/libg
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v2.5.1()]
 //Details about finding PythonInterp
-FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.13.3()]
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.14.3()]
 //Details about finding PythonLibs
-FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/libpython3.13.so][/usr/include/python3.13][v3.13.3(3.13)]
+FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/libpython3.13.so][/usr/include/python3.13][v(3.14)]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding Volk
@@ -597,8 +615,16 @@ VOLK_INCLUDE_DIRS-ADVANCED:INTERNAL=1
 VOLK_LIBRARIES-ADVANCED:INTERNAL=1
 __pkg_config_arguments_PC_GMP:INTERNAL=gmp
 __pkg_config_checked_PC_GMP:INTERNAL=1
+//ADVANCED property for variable: boost_atomic_DIR
+boost_atomic_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_chrono_DIR
+boost_chrono_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_container_DIR
+boost_container_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_date_time_DIR
 boost_date_time_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_exception_DIR
+boost_exception_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_headers_DIR
 boost_headers_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_program_options_DIR
